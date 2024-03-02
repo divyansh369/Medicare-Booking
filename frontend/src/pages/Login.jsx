@@ -26,10 +26,11 @@ const Login = () => {
               name="email"
               value={FormData.email}
               onChange={handleInputChange}
-              className="w-full py-3  border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer" required
+              className="w-full py-3  border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer"
+              required
             />
           </div>
-        
+
           <div className="mb-5">
             <input
               type="password"
@@ -37,17 +38,26 @@ const Login = () => {
               name="password"
               value={FormData.password}
               onChange={handleInputChange}
-              className="w-full py-3  border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer" required
+              className="w-full py-3  border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer"
+              required
             />
           </div>
 
           <div className="mt-7">
-            <button type="submit" className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg  py-3">Login</button>
+            <button
+              type="submit"
+              className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg  py-3"
+            >
+              Login
+            </button>
           </div>
 
-          <p className="mt-5 text-textColor text-center">Don&apos;t have an account? <Link to="/register" className='text-primaryColor font-medium ml-1'>Register</Link></p>
-
-
+          <p className="mt-5 text-textColor text-center">
+            Don&apos;t have an account?
+            <Link to="/register" className="text-primaryColor font-medium ml-1">
+              Register
+            </Link>
+          </p>
         </form>
       </div>
     </section>
