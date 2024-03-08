@@ -5,7 +5,7 @@ import {
   deleteDoctor,
   getAllDoctor,
   getSingleDoctor,
-} from "../Controllers/doctorController.js";
+} from "../Controllers/doctorController.js"
 
 import { authenticate,restrict } from "../auth/verifyToken.js";
 
