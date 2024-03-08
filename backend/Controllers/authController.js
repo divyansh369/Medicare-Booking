@@ -17,7 +17,7 @@ export const register = async (req, res) => {
     if (role === "patient") {
       user =await User.findOne({ email });
     } else if (role === "doctor") {
-      user = awaitDoctor.findOne({ email });
+      user = await Doctor.findOne({ email });
     }
 
     //check if user exists
@@ -40,7 +40,7 @@ export const register = async (req, res) => {
       });
     }
     if (role === "doctor") {
-      user = new User({
+      user = new Doctor({
         name,
         email,
         password: hashPassword,
