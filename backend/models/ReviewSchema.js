@@ -35,8 +35,6 @@ reviewSchema.pre(/^find/, function (next) {
 });
 
 reviewSchema.statics.calcAverageRatings = async function (doctorId) {
-  // this points the current reviews
-
   const stats = await this.aggregate([
     {
       $match: { doctor: doctorId },
@@ -49,14 +47,24 @@ reviewSchema.statics.calcAverageRatings = async function (doctorId) {
       },
     },
   ]);
-  await Doctor.findByIdAndUpdate(doctorId,{
-    totalRating: stats[0].numOfRating,
-    averageRating: stats[0].avgRating,
-  })
+
+  // console.log("Stats:", stats);
+
+    const { numOfRating, avgRating } = stats[0];
+    // console.log("Updating doctor with ID:", doctorId);
+    // console.log("Total Ratings:", numOfRating);
+    // console.log("Average Rating:", avgRating);
+
+    await Doctor.findByIdAndUpdate(doctorId, {
+      totalRating: numOfRating,
+      averageRating: avgRating,
+    });
 };
 
 reviewSchema.post("save", function () {
+  // console.log("A new review is saved. Updating ratings...");
   this.constructor.calcAverageRatings(this.doctor);
 });
+
 
 export default mongoose.model("Review", reviewSchema);
