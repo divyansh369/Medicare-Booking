@@ -65,7 +65,7 @@ export const login =async (req, res) => {
         let user=null
 
         const patient = await User.findOne({email})
-        const doctor = await User.findOne({email})
+        const doctor = await Doctor.findOne({email})
 
         if(patient){
             user=patient
@@ -73,7 +73,6 @@ export const login =async (req, res) => {
         if(doctor){
             user= doctor
         }
-
         if(!user){
             return res.status(404).json({message:"User not found"})
         }
@@ -87,7 +86,7 @@ export const login =async (req, res) => {
 
         const {password,role,appointments,...rest} = user._doc
 
-        res.status(400).json({status:true, message:"Successfully login.",token,data:{...rest},role})
+        res.status(200).json({status:true, message:"Successfully login.",token,data:{...rest},role})
 
     } catch (error) {
         res.status(400).json({status:false,message:"Failed to login"})                 
